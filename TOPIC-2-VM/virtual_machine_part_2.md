@@ -51,3 +51,32 @@ To create an AWS instance (a virtual server in the cloud), follow these steps:
 9. Configure storage (the default size is usually sufficient for testing).
 10. Click Launch Instance.
 
+
+
+
+Steps to Connect to an AWS EC2 Instance Using SSH
+Open a terminal on Ubuntu.
+
+Go to the folder containing your .pem key file:
+
+cd ~/Downloads/aws_key
+
+Set the correct permissions on the key file:
+
+chmod 400 key_aws_air.pem
+
+Connect using the instance's Public IP Address:
+
+ssh -i key_aws_air.pem ubuntu@PUBLIC_IP
+
+Example:
+
+ssh -i key_aws_air.pem ubuntu@54.123.45.67
+
+Accept the fingerprint the first time you connect:
+
+Are you sure you want to continue connecting (yes/no)?
+
+Type:
+
+yes
