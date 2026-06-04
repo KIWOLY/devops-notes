@@ -32,3 +32,22 @@ what is Script
     Terraform .........used on multiple cloud platform
 
 
+how to create  aws instance 
+
+To create an AWS instance (a virtual server in the cloud), follow these steps:
+
+1. Go to AWS Management Console and sign in.
+2. Open Amazon EC2.
+3. Click Launch Instance.
+4. Enter a name for your instance (e.g., MyServer).
+5. Choose an operating system image (AMI), such as:
+     Ubuntu Server
+     Amazon Linux
+6. Select an instance type (e.g., t2.micro or t3.micro, which are often eligible for the AWS Free Tier).
+7. Create or select a key pair (.pem file) for SSH access and download it safely.
+8. Configure network settings:
+     Allow SSH (port 22) for Linux.
+     Allow HTTP (port 80) and HTTPS (port 443) if hosting a website.
+9. Configure storage (the default size is usually sufficient for testing).
+10. Click Launch Instance.
+
