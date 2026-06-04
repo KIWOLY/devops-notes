@@ -80,3 +80,18 @@ Are you sure you want to continue connecting (yes/no)?
 Type:
 
 yes
+
+
+chmod 400 sets the file permissions so that only you (the owner) can read it — nothing else.
+
+Breaking it down:
+chmod takes a 3-digit number, each digit representing permissions for:
+DigitWhoFirst 4Owner (you)Second 0GroupThird 0Others
+Each digit is a sum of:
+
+4 = read
+2 = write
+1 = execute
+0 = no permission
+
+So 400 = owner can read only, group and others have zero access.
