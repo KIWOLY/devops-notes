@@ -73,3 +73,29 @@ awk = text processing tool
     = reads line by line
     = splits by whitespace automatically
     = lets you pick any column you want
+
+
+sytanx   of awk 
+awk '{action}' file
+awk 'condition {action}' file
+awk -F"delimiter" '{action}' file
+
+
+
+
+set -x — Debug mode
+Shows every command before it runs. Like an X-ray of your script.
+
+set -e — Exit on error
+Stops the script immediately if any command fails. Without it, bash keeps running even after errors.
+
+
+set -o — Set options
+set -o is the full form of set -x and set -e. It sets named options.
+
+set -o pipefail   # catches errors inside pipes
+
+set -o xtrace     # same as set -x  (debug mode)
+set -o errexit    # same as set -e  (exit on error)
+set -o nounset    # same as set -u  (exit on undefined variable)
+set -o pipefail   # catches errors inside pipes
