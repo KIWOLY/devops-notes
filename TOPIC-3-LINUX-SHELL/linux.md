@@ -98,3 +98,29 @@ Search:
 bashfind / -name "file.txt"         # find a file
 grep "error" /var/log/syslog    # search inside file
 grep -r "keyword" /var/log/     # search recursively
+
+ls -ltr
+
+Breaking Down the Flags
+
+ls = list directory contents
+
+Flag                         Meaning
+-l                         long format — show detailed info
+-t                         sort by time — newest first
+-r                         reverse the order — so oldest first
+
+
+
+Example  output is like this 
+
+-rw-r--r-- 1 ubuntu ubuntu 1678 Jun 01 08:45 key_aws_air.pem    
+
+Column            Value                 Meaning
+Permissions      -rw-r--r--            who can read/write/execute
+Links                1                   number of hard links
+Owner             ubuntu                who owns the file
+Group            ubuntu                which group owns it
+Size              1678                  size in bytes
+Date             Jun 01 08:45            last modified time
+Name               key_aws_air.pem         file name
