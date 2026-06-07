@@ -21,8 +21,29 @@ bash./morning-setup.sh
 That file = a shell script.
 
 
+What is #!/bin/bash?
+It is called a Shebang (also written as sha-bang or hashbang). It is always the very first line of every shell script.
+
+#!          /bin/bash
+│           │
+│           └── path to the interpreter (bash)
+│
+└── shebang characters (hash + exclamation)
 
 
+What Does it Actually Do?
+When you run a script, Linux reads the first line to know which program should execute this file.
+
+
+Different Shebangs for Different Languages
+The shebang changes depending on what language your script is written in:
+
+#!/bin/bash          # bash script
+#!/bin/sh            # basic sh shell
+#!/usr/bin/python3   # python script
+#!/usr/bin/env node  # nodejs script
+#!/usr/bin/env ruby  # ruby script
+#!/usr/bin/perl      # perl script
 
 What Shell Scripting Can Do
     1. Automate Server Setup
