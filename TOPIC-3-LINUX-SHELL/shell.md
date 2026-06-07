@@ -56,6 +56,11 @@ chmod 755
        │└─── group  = 5 = r-x
        └──── owner  = 7 = rwx
 
+/first-shell.sh    → looked in ROOT / folder — wrong place
+./first-shell.sh   → looked in current folder — correct! ✅
+first-shell.sh     → searched PATH folders — not there!
+
+
 What is #!/bin/bash?
 It is called a Shebang (also written as sha-bang or hashbang). It is always the very first line of every shell script.
 
