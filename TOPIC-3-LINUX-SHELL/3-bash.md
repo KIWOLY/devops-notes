@@ -51,3 +51,25 @@ u           → filter by username
 1           → show individual CPU cores
 h           → help
 
+
+## proces 
+
+ps -ef
+   │ │
+   │ └── f = full format (show all columns)
+   └──── e = every process (all users, all processes)
+
+
+ps -ef            # list ALL processes on the system
+|                 # send that output to next command
+grep "bash"       # filter and show only lines containing "bash"
+
+ps -ef | grep "bash"
+
+
+What is awk?
+awk is a tool that reads text line by line, splits it into columns, and lets you extract or manipulate specific parts.
+awk = text processing tool
+    = reads line by line
+    = splits by whitespace automatically
+    = lets you pick any column you want
