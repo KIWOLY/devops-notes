@@ -17,9 +17,44 @@ Imagine every morning you do this manually:
     echo "Done!"
 
 Instead of typing 4 commands every time, you put them in a file and run it once:
-bash./morning-setup.sh 
+bash ./morning-setup.sh    ( we start with bash cause we did not give permision)
 That file = a shell script.
 
+
+what is chmod 
+    chmod = change + mode (permissions mode)
+
+    It is a Linux command that controls who can read, write, or execute a file.
+
+    Three types of people in Linux
+Every file has 3 groups of people:
+Owner   → the person who created the file (YOU)
+Group   → a team of users on the system
+Others  → everyone else
+
+Three types of permission
+Each group can have 3 types of access:
+r = read     → can open and view the file
+w = write    → can edit and modify the file
+x = execute  → can run the file (scripts, programs)
+
+
+r = 4  (read)
+w = 2  (write)
+x = 1  (execute)
+- = 0  (nothing)
+
+rwx = 4+2+1 = 7   (full access)
+rw- = 4+2+0 = 6   (read + write)
+r-x = 4+0+1 = 5   (read + execute)
+r-- = 4+0+0 = 4   (read only)
+--- = 0+0+0 = 0   (no access)
+
+chmod 755
+       │││
+       ││└── others = 5 = r-x
+       │└─── group  = 5 = r-x
+       └──── owner  = 7 = rwx
 
 What is #!/bin/bash?
 It is called a Shebang (also written as sha-bang or hashbang). It is always the very first line of every shell script.
