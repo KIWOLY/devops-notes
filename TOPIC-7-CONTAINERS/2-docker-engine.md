@@ -1,78 +1,81 @@
+# Docker Engine
 
-Docker Engine
-What is Docker Engine?
-Docker Engine is the core of Docker. It is the underlying technology that actually creates, runs, and manages containers.
+---
 
+## What is Docker Engine?
 
+Docker Engine is the **core of Docker**. It is the underlying technology that actually creates, runs, and manages containers.
 
-Everything you do with Docker — building images, running containers, networking — goes through Docker Engine.
+> Everything you do with Docker — building images, running containers, networking — goes through Docker Engine.
 
+---
 
+## Docker Engine Architecture
 
-
-Docker Engine Architecture
+```
 ┌─────────────────────────────────────────────┐
 │              Docker Engine                  │
 │                                             │
 │  ┌─────────────┐                            │
 │  │  Docker CLI │  ← You type commands here  │
 │  └──────┬──────┘                            │
-│         │ REST API                          │
+│         │  REST API                         │
 │  ┌──────▼──────┐                            │
-│  │  Docker     │  ← Brain of Docker         │
-│  │  Daemon     │    (dockerd)               │
+│  │   Docker    │  ← Brain of Docker         │
+│  │   Daemon    │    (dockerd)               │
 │  │  (dockerd)  │                            │
-│  └──────┬──────┘                            │
-│                              │
+│  └─────────────┘                            │
 └─────────────────────────────────────────────┘
+```
 
-1.  Docker CLI
+### 1. Docker CLI
 
+What you interact with directly:
+
+```bash
 docker run nginx
 docker build .
 docker ps
-What you interact with
-Just a client that sends commands
-Talks to Docker Daemon via REST API
+```
 
+- Just a **client** that sends commands
+- Talks to Docker Daemon via REST API
 
+### 2. Docker Daemon (`dockerd`)
 
-2.  Docker Daemon (dockerd)
+- The main background process — always running on your machine
+- Receives commands from the CLI
+- Manages images, containers, networks, and volumes
+- The real **"brain"** of Docker
 
-The main background process
-Always running on your machine
-Receives commands from CLI
-Manages images, containers, networks, volumes
-The real "brain" of Docker
+> **Docker Desktop** = Docker Engine + graphical tools + developer features  
+> **Docker Engine** = the core container runtime used on servers
 
+---
 
-In short: Docker Desktop = Docker Engine + graphical tools + developer features. Docker Engine = the core container runtime used on servers.
+## What is a Registry?
 
+A registry is a **storage and distribution system for Docker images**. Think of it as a server where images live — you push images to it and pull images from it.
 
-
-
-What is a Registry?
-
-A registry is a storage and distribution system for Docker images.
-Think of it as a server where images live — you push images to it and pull images from it.
-
-Registry  =  GitHub        (stores and shares code)
-Image     =  Repository    (a specific project)
+```
+Registry  =  GitHub         (stores and shares code)
+Image     =  Repository     (a specific project)
 Tag       =  Branch/Release (version of that project)
+```
 
-Just like GitHub stores code,
-Registry stores Docker Images
+### The Workflow
 
+```
+You write         You build            You push
+Dockerfile   →   Image locally   →    to Registry
+                                            ↓
+                                     Anyone can pull
+                                     and run it anywhere
+```
 
+### Types of Registries
 
-You write         You build          You push
-Dockerfile   →    Image locally  →   to Registry
-                                          ↓
-                                   Anyone can pull
-                                   and run it anywhere
-
-
-Types of Registries
+```
 ┌─────────────────────────────────────────────────────┐
 │                   Registries                        │
 │                                                     │
@@ -87,16 +90,17 @@ Types of Registries
 │                      Company images                 │
 │                      Private & secure               │
 └─────────────────────────────────────────────────────┘
+```
 
+---
 
+## What is Docker Hub?
 
-What is Docker Hub?
+Docker Hub is the **official public registry** made by Docker. It is the default registry — when you run `docker pull nginx`, it pulls from Docker Hub automatically.
 
-Docker Hub is the official public registry made by Docker.
-It is the default registry — when you do docker pull nginx, it pulls from Docker Hub automatically.
+### Docker Hub Structure
 
-
-Docker Hub Structure
+```
 ┌─────────────────────────────────────────────┐
 │               Docker Hub                    │
 │                                             │
@@ -110,9 +114,11 @@ Docker Hub Structure
 │  │ ubuntu       │                           │
 │  └──────────────┘                           │
 └─────────────────────────────────────────────┘
+```
 
+### Pushing an Image to Docker Hub
 
-
+```bash
 # Build
 docker build -t myapp .
 
@@ -120,8 +126,6 @@ docker build -t myapp .
 docker login
 
 # Tag
-docker tag <local-image> <dockerhub-username>/<repository>:<tag>
-
 docker tag myapp kiwoly/myapp:v1
 
 # Push
@@ -129,38 +133,52 @@ docker push kiwoly/myapp:v1
 
 # Pull (on another machine)
 docker pull kiwoly/myapp:v1
+```
 
+---
 
-What is systemd?
+## `systemd` — The Init System
 
-It is the first process that starts after the Linux kernel boots and has Process ID (PID) 1. Its job is to initialize the system and manage services and processes.
+`systemd` is the **first process that starts after the Linux kernel boots** — it has Process ID (PID) 1. Its job is to initialize the system and manage services and processes.
 
+### Services `systemd` Starts
 
-systemd starts essential services such as:
+- Network services
+- SSH server
+- Docker
+- Databases
+- Web servers
 
-Network services
-SSH server
-Docker
-Databases
-Web servers
+---
 
+## `systemctl` — Managing Services
 
-systemctl is a command-line tool used to manage system services and the system state on Linux systems that use systemd as their init system.
+`systemctl` is the command-line tool used to **manage system services** on Linux systems that use `systemd`.
 
-Think of systemctl as the command you use to:
-
-Start services
-Stop services
-Restart services
-Check service status
-Enable services to start automatically at boot
-Disable services
-
-
-Example: Managing Docker
-
-After installing Docker Engine on Ubuntu:
-
+```bash
+# Start a service
 sudo systemctl start docker
-sudo systemctl enable docker
+
+# Stop a service
+sudo systemctl stop docker
+
+# Restart a service
+sudo systemctl restart docker
+
+# Check service status
 sudo systemctl status docker
+
+# Enable service to start automatically at boot
+sudo systemctl enable docker
+
+# Disable service from starting at boot
+sudo systemctl disable docker
+```
+
+### Example: Managing Docker After Install
+
+```bash
+sudo systemctl start docker    # start Docker now
+sudo systemctl enable docker   # start Docker on every boot
+sudo systemctl status docker   # verify it's running
+```

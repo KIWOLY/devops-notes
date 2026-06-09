@@ -1,11 +1,19 @@
-docker build — Turns Dockerfile into Image
+# Docker Commands Reference
 
-Basic Syntax
+---
 
-bashdocker build [OPTIONS] PATH
+## `docker build` — Turns a Dockerfile into an Image
 
-Most Used Build Commands
-Basic build (. means current directory)
+### Basic Syntax
+
+```bash
+docker build [OPTIONS] PATH
+```
+
+### Common Build Commands
+
+```bash
+# Basic build (. means current directory)
 docker build .
 
 # Build with a name/tag
@@ -17,25 +25,30 @@ docker build -t myapp:v1 .
 # Build with Docker Hub username
 docker build -t myusername/myapp:v1 .
 
-# Build from different directory
+# Build from a different directory
 docker build -t myapp /path/to/project
 
-# Build from specific Dockerfile
+# Build from a specific Dockerfile
 docker build -t myapp -f Dockerfile.prod .
 
 # Build without using cache
 docker build --no-cache -t myapp .
+```
 
+---
 
+## `docker run` — Creates and Starts a Container
 
-docker run — Creates and Starts a Container
+### Basic Syntax
 
-Basic Syntax
-
+```bash
 docker run [OPTIONS] IMAGE [COMMAND]
-Most Used Run Commands
+```
 
-Basic run
+### Common Run Commands
+
+```bash
+# Basic run
 docker run nginx
 
 # Run in background (detached mode)
@@ -44,58 +57,50 @@ docker run -d nginx
 # Run with a name
 docker run -d --name mycontainer nginx
 
-# Run and auto remove when stopped
+# Auto remove when stopped
 docker run --rm nginx
 
 # Run with interactive terminal
 docker run -it ubuntu bash
+```
 
-Port Mapping (-p)
-Map host port to container port
+### Port Mapping (`-p`)
 
-
-# -p HOST_PORT:CONTAINER_PORT
+```bash
+# Syntax: -p HOST_PORT:CONTAINER_PORT
 docker run -d -p 8080:80 nginx
+```
 
-
+```
 Your Browser                    Container
 localhost:8080  →  Docker  →   port 80 (nginx)
                port mapping
+```
 
+---
 
-#  — no tag, hard to manage
-docker build .
+## Common Mistakes
 
-# Right — always tag your builds
+| ❌ Wrong | ✅ Right | Reason |
+|----------|----------|--------|
+| `docker build .` | `docker build -t myapp:v1 .` | No tag = hard to manage |
+| `docker run myapp` | `docker run -p 3000:3000 myapp` | No port = can't access app |
+| `docker run myapp` | `docker run -d myapp` | No `-d` = terminal gets stuck |
+
+### Quick Working Example
+
+```bash
 docker build -t myapp:v1 .
+docker run -d -p 3000:3000 --name myapp myapp:v1
+```
 
-#  — port not mapped, can't access app
-docker run myapp
-
-#  — map the port
-docker run -p 3000:3000 myapp
-
-# ❌  no -d, terminal gets stuck
-docker run myapp
-
-#  — run in background
-docker run -d myapp
-
-
-
-docker build -t myapp:v1 .
-
-docker run -d -p 3000:3000 --name myapp  myapp:v1
-
-
+---
 
 ## Most Used Docker Commands
 
+### Image Commands
 
-
-##  Image Commands
-
-
+```bash
 # Pull image from registry
 docker pull nginx
 docker pull node:18
@@ -126,11 +131,13 @@ docker history myapp:v1
 
 # Inspect image details
 docker image inspect nginx
+```
 
+---
 
-##  Container Commands
+### Container Commands
 
-
+```bash
 # Run a container
 docker run nginx
 
@@ -143,7 +150,7 @@ docker run -d --name myapp nginx
 # Run with port mapping
 docker run -d -p 8080:80 nginx
 
-# Run with env variable
+# Run with environment variable
 docker run -d -e DB_HOST=localhost myapp
 
 # Run with volume
@@ -152,7 +159,7 @@ docker run -d -v $(pwd):/app myapp
 # Run interactively
 docker run -it ubuntu bash
 
-# Run and auto remove when stopped
+# Auto remove when stopped
 docker run --rm nginx
 
 # List running containers
@@ -173,16 +180,16 @@ docker restart myapp
 # Remove a container
 docker rm myapp
 
-# Force remove running container
+# Force remove a running container
 docker rm -f myapp
 
 # Remove all stopped containers
 docker container prune
+```
 
+---
 
-
-
-## Inspect & Debug Commands
+### Inspect & Debug Commands
 
 ```bash
 # See container logs
@@ -194,19 +201,19 @@ docker logs -f myapp
 # See last 50 lines of logs
 docker logs --tail 50 myapp
 
-# Go inside running container
+# Go inside a running container
 docker exec -it myapp bash
 
-# Go inside with sh (alpine containers)
+# Go inside with sh (for Alpine containers)
 docker exec -it myapp sh
 
-# Run single command inside container
+# Run a single command inside container
 docker exec myapp ls /app
 
 # See container resource usage live
 docker stats
 
-# See stats of specific container
+# See stats of a specific container
 docker stats myapp
 
 # Inspect full container details
@@ -217,11 +224,13 @@ docker top myapp
 
 # See port mappings
 docker port myapp
+```
 
+---
 
-##  Volume Commands
+### Volume Commands
 
-
+```bash
 # List all volumes
 docker volume ls
 
@@ -236,11 +245,13 @@ docker volume rm myvolume
 
 # Remove all unused volumes
 docker volume prune
+```
 
+---
 
-## Network Commands
+### Network Commands
 
-
+```bash
 # List all networks
 docker network ls
 
@@ -261,11 +272,13 @@ docker network rm mynetwork
 
 # Remove all unused networks
 docker network prune
+```
 
+---
 
-## Cleanup Commands
+### Cleanup Commands
 
-
+```bash
 # Remove all stopped containers
 docker container prune
 
@@ -286,9 +299,11 @@ docker system prune -a --volumes
 
 # See disk usage
 docker system df
+```
 
+---
 
-## Docker Compose Commands
+### Docker Compose Commands
 
 ```bash
 # Start all services
@@ -309,10 +324,10 @@ docker compose down -v
 # See logs
 docker compose logs
 
-# Follow logs
+# Follow logs live
 docker compose logs -f
 
-# See logs of specific service
+# See logs of a specific service
 docker compose logs app
 
 # List running services
@@ -321,7 +336,7 @@ docker compose ps
 # Go inside a service container
 docker compose exec app bash
 
-# Run one off command
+# Run a one-off command
 docker compose run app node migrate.js
 
 # Restart a service
@@ -332,9 +347,11 @@ docker compose build
 
 # Pull latest images
 docker compose pull
+```
 
+---
 
-## System Commands
+### System Commands
 
 ```bash
 # Check Docker version
@@ -354,22 +371,25 @@ docker login
 
 # Logout
 docker logout
+```
 
+---
 
-##  Most Used Day to Day
+## Day-to-Day Commands
+
+> These are the ones you'll use **every single day**:
 
 ```bash
-# These are the ones you use EVERY DAY:
-
-docker ps                    # whats running?
-docker ps -a                 # all containers
-docker logs -f myapp         # watch logs
-docker exec -it myapp bash   # go inside
-docker stop myapp            # stop it
-docker rm myapp              # delete it
-docker images                # list images
-docker rmi myapp             # delete image
-docker system prune          # clean up
-docker compose up -d         # start project
-docker compose down          # stop project
-docker compose logs -f       # watch logs
+docker ps                    # What's running?
+docker ps -a                 # All containers
+docker logs -f myapp         # Watch logs live
+docker exec -it myapp bash   # Go inside container
+docker stop myapp            # Stop it
+docker rm myapp              # Delete it
+docker images                # List images
+docker rmi myapp             # Delete image
+docker system prune          # Clean up
+docker compose up -d         # Start project
+docker compose down          # Stop project
+docker compose logs -f       # Watch project logs
+```

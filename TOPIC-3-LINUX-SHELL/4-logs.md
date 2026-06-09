@@ -1,8 +1,17 @@
-Logs Commands
-In DevOps you read logs every single day — when something breaks, logs tell you exactly what happened.
+# Logs & curl
 
-1. tail — most used log command
-bash# Follow live logs in real time (most used)
+---
+
+## Why Logs Matter in DevOps
+
+> In DevOps you read logs **every single day** — when something breaks, logs tell you exactly what happened.
+
+---
+
+## `tail` — Most Used Log Command
+
+```bash
+# Follow live logs in real time (most used)
 tail -f /var/log/syslog
 
 # Show last 50 lines
@@ -13,25 +22,31 @@ tail -f /var/log/syslog /var/log/auth.log
 
 # Follow AND show last 100 lines
 tail -fn 100 /var/log/nginx/access.log
+```
 
+---
 
+## Important Log File Locations
 
+| Path | What It Contains |
+|------|-----------------|
+| `/var/log/syslog` | General system logs |
+| `/var/log/auth.log` | Login and SSH attempts |
+| `/var/log/kern.log` | Kernel messages |
+| `/var/log/dpkg.log` | Package install logs |
+| `/var/log/nginx/` | Nginx web server logs |
+| `/var/log/nginx/access.log` | Every request to nginx |
+| `/var/log/nginx/error.log` | Nginx errors |
+| `/var/log/apache2/` | Apache web server logs |
+| `/var/log/mysql/` | MySQL database logs |
+| `/var/log/docker/` | Docker logs |
 
-6. Important log file locations
-/var/log/syslog          # general system logs
-/var/log/auth.log        # login and SSH attempts
-/var/log/kern.log        # kernel messages
-/var/log/dpkg.log        # package install logs
-/var/log/nginx/          # nginx web server logs
-/var/log/nginx/access.log   # every request to nginx
-/var/log/nginx/error.log    # nginx errors
-/var/log/apache2/        # apache web server logs
-/var/log/mysql/          # mysql database logs
-/var/log/docker/         # docker logs
+---
 
+## Docker Logs
 
-7. Docker logs
-bash# View logs of a container
+```bash
+# View logs of a container
 docker logs container_name
 
 # Follow live
@@ -45,14 +60,17 @@ docker logs -t container_name
 
 # Combine follow and last 50 lines
 docker logs -fn 50 container_name
+```
 
+---
 
+## `curl` — Transfer Data from URLs
 
+`curl` is your Swiss army knife for making **HTTP requests from the terminal**. Used constantly in DevOps.
 
-curl — Transfer Data from URLs
-curl is your Swiss army knife for making HTTP requests from the terminal. Used constantly in DevOps.
+### Basic Usage
 
-Basic usage
+```bash
 # Simple GET request
 curl https://google.com
 
@@ -61,12 +79,12 @@ curl ifconfig.me
 
 # Get just the response (silent mode)
 curl -s https://api.example.com
+```
 
+### GET Requests
 
-
-
-1. GET request
-bash# Basic GET
+```bash
+# Basic GET
 curl https://api.example.com/users
 
 # With headers shown
@@ -80,11 +98,12 @@ curl -L https://example.com
 
 # Silent — no progress bar
 curl -s https://api.example.com
+```
 
+### POST Requests
 
-
-2. POST request
-bash# POST with JSON data
+```bash
+# POST with JSON data
 curl -X POST https://api.example.com/users \
   -H "Content-Type: application/json" \
   -d '{"name": "kiwoly", "role": "devops"}'
@@ -92,10 +111,12 @@ curl -X POST https://api.example.com/users \
 # POST with form data
 curl -X POST https://example.com/login \
   -d "username=kiwoly&password=mypass"
+```
 
+### `curl` vs `wget`
 
-
-curl vs wget
-
-            curl                                    wget
-Main     useAPI calls, testing                  downloading file
+| Feature | `curl` | `wget` |
+|---------|--------|--------|
+| Main use | API calls, testing endpoints | Downloading files |
+| Output | Prints to terminal by default | Saves to file by default |
+| Protocols | HTTP, HTTPS, FTP, and more | HTTP, HTTPS, FTP |
