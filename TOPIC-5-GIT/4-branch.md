@@ -380,3 +380,23 @@ git push origin --delete feature/completed
 | Large team with high velocity | **Trunk Based Development** |
 | Maintaining an open source library | **Release Branching** |
 
+
+Grouped by lifespan:
+┌─────────────────────────────────┐
+│  PERMANENT                      │
+│  main                           │
+│  develop                        │
+└─────────────────────────────────┘
+          ↓
+┌─────────────────────────────────┐
+│  TEMPORARY (supporting)         │
+│  feature   → new functionality  │
+│  release   → release prep       │
+│  hotfix    → emergency fixes    │
+└─────────────────────────────────┘
+
+
+
+feature → develop → release → main
+                                ↑
+                    hotfix ─────┘
