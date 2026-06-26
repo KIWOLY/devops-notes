@@ -25,6 +25,18 @@ Most servers in the world run Linux because it is:
 
 ---
 
+Unlike Windows or macOS, Linux is modular. At its core, it consists of three main layers:
+
++-------------------------------------------------------+
+|              Applications (Nginx, Docker)             |
++-------------------------------------------------------+
+|         Shell (Bash, Zsh) - Interprets commands       |
++-------------------------------------------------------+
+|  Kernel - Manages hardware (CPU, RAM, Disks, Network) |
++-------------------------------------------------------+
+|                   Physical Hardware                   |
++-------------------------------------------------------+
+
 ## What is Shell?
 
 The shell is a program that **takes your commands and tells the OS what to do**. It is the language you speak to Linux.
@@ -54,6 +66,8 @@ Think of it like this:
 Bash is both a **shell** (command interpreter) and a **scripting language**. Created in 1989, it is the default shell on almost every Linux server.
 
 ---
+
+
 
 ## Essential Linux Commands
 
