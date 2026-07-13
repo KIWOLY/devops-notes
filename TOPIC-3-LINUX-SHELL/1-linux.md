@@ -69,6 +69,19 @@ Bash is both a **shell** (command interpreter) and a **scripting language**. Cre
 
 
 
+## Anatomy of a Command
+
+Most Linux commands follow the same shape: **command → options → target**.
+
+```
+head      -n 1      notes.txt
+command   options   target
+```
+
+Recognizing this pattern makes unfamiliar commands easier to read — you don't need to memorize every tool, just spot which part is the verb, which part is the flag, and which part is what it acts on.
+
+---
+
 ## Essential Linux Commands
 
 ### Navigation
@@ -80,6 +93,7 @@ ls -la        # list with details + hidden files
 cd /var/log   # change directory
 cd ..         # go up one level
 cd ~          # go to home directory
+cd -          # go to previous directory
 ```
 
 ### Files & Folders
@@ -95,6 +109,19 @@ cat file.txt        # view file content
 nano file.txt       # edit file (beginner friendly)
 vim file.txt        # edit file (powerful, used on servers)
 ```
+
+> `rm -r` has no recycle bin — deletions are permanent. Always double-check the path before pressing Enter.
+
+### Viewing File Content
+
+```bash
+cat file.txt        # print entire file
+less file.txt        # paginated view (q to quit, / to search)
+head -n 20 file.txt   # first 20 lines
+tail -n 20 file.txt   # last 20 lines
+```
+
+> For `tail -f` and live log monitoring, see [4-logs.md](4-logs.md).
 
 ### Permissions
 
