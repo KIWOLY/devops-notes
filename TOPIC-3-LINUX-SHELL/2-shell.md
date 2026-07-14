@@ -124,6 +124,17 @@ chmod 755
        └──── owner  = 7 = rwx
 ```
 
+### Symbolic Syntax
+
+Instead of numeric mode, you can add/remove permissions per group directly:
+
+```bash
+chmod u+x script.sh     # add execute for owner
+chmod g-w file.txt      # remove write for group
+chmod o+r file.txt      # add read for others
+chmod a+x script.sh     # apply to all (user+group+others)
+```
+
 ---
 
 ## Common Shell Scripting Tools

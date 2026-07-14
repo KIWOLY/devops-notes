@@ -123,13 +123,32 @@ tail -n 20 file.txt   # last 20 lines
 
 > For `tail -f` and live log monitoring, see [4-logs.md](4-logs.md).
 
+### Users & Groups
+
+Linux tracks users and groups in system files:
+
+```bash
+cat /etc/passwd        # all users (username:x:UID:GID:comment:home:shell)
+cat /etc/group         # all groups
+sudo cat /etc/shadow   # encrypted passwords, root-only
+```
+
+Checking your own identity:
+
+```bash
+whoami          # current username
+id              # UID, GID, and all group memberships
+groups          # just the group names
+```
+
 ### Permissions
 
 ```bash
-ls -la                        # see permissions
-chmod 400 key.pem             # set permissions (owner read only)
-chmod 755 script.sh           # owner=rwx, group=rx, others=rx
-chown ubuntu:ubuntu file.txt  # change owner
+ls -la                          # see permissions
+chmod 400 key.pem               # set permissions (owner read only)
+chmod 755 script.sh             # owner=rwx, group=rx, others=rx
+chown ubuntu:ubuntu file.txt    # change owner and group together
+chgrp developers file.txt       # change group only
 ```
 
 ### System Info
@@ -140,8 +159,9 @@ htop      # better version of top
 df -h     # disk space
 free -h   # RAM usage
 uname -a  # OS info
-whoami    # current user
 ```
+
+> For `whoami`, `id`, and `groups`, see the [Users & Groups](#users--groups) section above.
 
 ### Networking
 

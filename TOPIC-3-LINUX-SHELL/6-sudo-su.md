@@ -57,3 +57,13 @@ su                      sudo
 | Duration | Until you `exit` | One command only |
 | Requires | Target user's password | Your own password |
 | Best for | Long admin sessions | Quick privileged commands |
+
+---
+
+## Configuring sudo Access
+
+`/etc/sudoers` defines who can run what as root. Never edit it directly — always use:
+
+```bash
+sudo visudo    # validates syntax before saving, prevents lockouts
+```
