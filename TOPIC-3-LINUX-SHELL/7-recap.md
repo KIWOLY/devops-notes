@@ -170,3 +170,35 @@ sudo systemctl status nginx
 sudo systemctl enable nginx     # Modifies initialization links so Nginx runs automatically at boot time
 sudo systemctl disable nginx    # Prevents service auto-run behavior on cold machine starts
 ```
+
+### Writing a Custom Service File
+
+Example service file for running a Django/Gunicorn app as a managed service:
+
+```ini
+# /etc/systemd/system/stays.service
+[Unit]
+Description=Stays Django App
+After=network.target
+
+[Service]
+User=kiwoly
+WorkingDirectory=/home/kiwoly/stays
+ExecStart=/home/kiwoly/stays/venv/bin/gunicorn stays.wsgi:application --bind 0.0.0.0:8000
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```bash
+sudo systemctl daemon-reload     # register the new service file
+sudo systemctl start stays
+sudo systemctl enable stays
+```
+
+> `Restart=always` makes systemd automatically restart the app if it crashes.
+
+### `journalctl` — systemd Logs
+
+For following logs of a systemd-managed service, see [journalctl in 4-logs.md](4-logs.md).

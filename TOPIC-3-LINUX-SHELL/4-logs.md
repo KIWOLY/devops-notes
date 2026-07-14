@@ -43,6 +43,19 @@ tail -fn 100 /var/log/nginx/access.log
 
 ---
 
+## `journalctl` — systemd Logs
+
+For services managed by `systemd` (see [service files in 7-recap.md](7-recap.md)), logs live in the journal instead of a plain file:
+
+```bash
+journalctl -u nginx                        # logs for a specific service
+journalctl -u nginx -f                      # follow live, like tail -f
+journalctl -u nginx --since "1 hour ago"    # time-filtered logs
+journalctl -xe                              # recent logs with extra context
+```
+
+---
+
 ## Docker Logs
 
 ```bash

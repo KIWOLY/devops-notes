@@ -49,6 +49,17 @@ nproc
 
 ---
 
+## Understanding Processes
+
+Every running program is a process with a unique PID (Process ID) and a PPID (Parent Process ID) — the process that started it.
+
+```bash
+echo $$        # PID of the current shell
+ps              # processes running in this terminal session
+```
+
+---
+
 ## `top` — Live System Monitor
 
 Shows a live real-time view of everything happening on your system — CPU, RAM, and all running processes.
@@ -96,12 +107,52 @@ ps -ef            # list ALL processes on the system
 
 ```bash
 ps -ef | grep "bash"
+ps aux | grep gunicorn     # alternate flag style, same idea
 ```
 
 This:
 1. `ps -ef` — lists all processes
 2. `|` — sends that output to the next command
 3. `grep "bash"` — filters and shows only lines containing "bash"
+
+### The `STAT` Column (`ps aux`)
+
+| Code | Meaning |
+|------|---------|
+| `S` | Sleeping — waiting for something |
+| `R` | Running |
+| `Z` | Zombie — finished but not yet cleaned up by its parent |
+| `D` | Uninterruptible sleep — usually waiting on disk I/O |
+
+---
+
+## kill, killall & Signals
+
+Killing a process means sending it a signal — the process decides how to respond.
+
+```bash
+kill PID           # SIGTERM (15) — polite shutdown request
+kill -9 PID         # SIGKILL (9) — forceful, immediate, cannot be ignored
+kill -1 PID          # SIGHUP (1) — commonly used to reload config
+killall gunicorn     # kill by process name instead of PID
+```
+
+> Always try plain `kill` (SIGTERM) first so the process can clean up. Use `kill -9` only when it's unresponsive.
+
+---
+
+## Foreground / Background Jobs
+
+```bash
+python manage.py runserver &     # run in background
+jobs                              # list background jobs
+fg %1                             # bring job 1 to foreground
+bg %1                             # resume a stopped job in background
+Ctrl+Z                            # suspend current foreground job
+nohup python manage.py runserver &   # keep running after terminal/SSH closes
+```
+
+> `nohup` prevents a process from dying when an SSH session ends — but `systemd` is the more robust production solution (see [7-recap.md](7-recap.md)).
 
 ---
 
