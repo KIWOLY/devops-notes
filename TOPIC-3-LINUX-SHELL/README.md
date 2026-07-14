@@ -8,3 +8,5 @@ Notes in this topic:
 - [Logs & curl](4-logs.md)
 - [`find` Command](5-find.md)
 - [`sudo` and `su`](6-sudo-su.md)
+- [Disk, Storage & Package Management](8-disk-storage.md)
+- [Networking on Linux](9-networking.md)
