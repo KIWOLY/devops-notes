@@ -46,6 +46,21 @@ Automation replaces manual handoffs — building, testing, and deploying happen 
 
 ---
 
+## PI Update (Program Increment Update)
+
+A **PI update** is a short progress summary shared during a **Program Increment** cycle. It helps teams communicate what has been completed, what is still in progress, and what risks or blockers need attention.
+
+In a DevOps environment, PI updates become easier because teams already work with:
+
+- Automation
+- Continuous integration and delivery
+- Monitoring and feedback
+- Better teamwork and visibility
+
+This makes it easier to share progress clearly and respond quickly to problems.
+
+---
+
 ## How to Introduce Yourself
 
 > "I am a DevOps Engineer with 2–3 years of overall experience. Before that, I was working as a Software Developer."
