@@ -4,40 +4,56 @@
 
 ## What is SDLC?
 
-SDLC is the **set of standards** followed in the software industry to design, develop, and test software.
+SDLC is the **set of standards and steps** followed in the software industry to design, develop, test, deploy, and maintain software systems.
 
-### Main Steps
+### Main Phases of SDLC
 
 ```
 Planning (Requirements)
     ↓
-Defining (Software Requirement Specification)
+Analysis / Specification
     ↓
-Designing
+Design
     ↓
-Developing
+Development
     ↓
 Testing
     ↓
-Deploy
+Deployment
+    ↓
+Maintenance
 ```
+
+---
+
+## Why SDLC is Important
+
+A clear SDLC helps teams:
+
+- Understand what the customer needs
+- Reduce errors during development
+- Improve software quality
+- Deliver products faster and more safely
+- Make changes easier in the future
 
 ---
 
 ## Where DevOps Fits in the SDLC
 
-DevOps focuses on **automating** the last three phases:
+DevOps improves the later stages of SDLC by making them faster, more automated, and more reliable.
 
 ```
-Building  →  Testing  →  Deploying
-         (all automated)
+Build  →  Test  →  Deploy  →  Monitor
+   (continuous and automated)
 ```
+
+This is where concepts like **CI/CD** become very important.
 
 ---
 
 ## Building
 
-> Converting the code that developers wrote into a working software program that a computer can actually run.
+> Converting source code into a working software program that can run on a machine.
 
 | Step | What Happens |
 |------|-------------|
@@ -49,27 +65,67 @@ Building  →  Testing  →  Deploying
 
 ## Testing
 
-> Checking that the software works correctly before it is released to users. This is the primary role of QE Engineers.
+> Checking that the software works correctly before it is released to users. This is the primary role of Quality Engineers (QE).
 
 | Type | Description |
 |------|-------------|
 | **Unit Testing** | Tests one small piece of code at a time |
-| **Integration** | Tests parts working together correctly |
-| **Regression** | Checks old features still work after changes |
-| **System Test** | Tests the whole app end to end |
+| **Integration Testing** | Tests whether different parts work together correctly |
+| **Regression Testing** | Checks that old features still work after new changes |
+| **System Testing** | Tests the whole application end to end |
 
 ---
 
 ## Deployment
 
-> Making software available to the customer or user.
+> Making the software available to users or customers.
+
+In modern DevOps, deployment is usually done automatically using tools such as:
+
+- Jenkins
+- GitHub Actions
+- GitLab CI/CD
+- Azure DevOps
+
+---
+
+## CI/CD in SDLC
+
+**CI** means Continuous Integration.
+
+- Developers regularly merge their code into a shared repository
+- The system automatically builds and tests the code
+
+**CD** means Continuous Delivery or Continuous Deployment.
+
+- The software is delivered quickly and reliably
+- Changes can be released to production with less manual effort
+
+This helps teams reduce delays and improve quality.
+
+---
+
+## Feedback and Maintenance
+
+After deployment, the team keeps monitoring the system.
+
+This includes:
+
+- Checking performance
+- Detecting bugs
+- Monitoring logs and alerts
+- Gathering user feedback
+
+That feedback is sent back into the next planning and development cycle.
 
 ---
 
 ## DevOps Impact
 
-- **Building**, **testing**, and **deployment** are all automated without manual intervention
-- This dramatically speeds up the delivery cycle
+- **Building**, **testing**, and **deployment** are automated
+- Delivery becomes faster and more reliable
+- Teams can respond to problems quickly
+- Quality improves through continuous monitoring and testing
 
 ---
 
@@ -77,5 +133,7 @@ Building  →  Testing  →  Deploying
 
 | Phase | What It Does |
 |-------|-------------|
-| **Monitor** | After deployment, DevOps tools watch the live system for errors, crashes, and slow performance — sending alerts automatically |
-| **Planning** | Feedback from monitoring informs the next round of planning — this is the "loop" that makes DevOps a **cycle**, not just a straight line |
+| **Monitor** | Watches the live system for errors, crashes, and slow performance — sending alerts automatically |
+| **Planning** | Uses feedback from monitoring and users to improve the next cycle |
+| **Automation** | Reduces manual work and makes the process repeatable |
+| **Collaboration** | Helps developers and operations teams work together smoothly |
