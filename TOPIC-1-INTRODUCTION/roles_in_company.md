@@ -19,6 +19,7 @@
 | **Software Architect** | Designs the overall structure of the system — like an engineer drawing blueprints before a building is constructed |
 | **Developer** | Writes the actual code that makes the software work |
 | **Technical Writer** | Writes documentation, user manuals, and guides so people know how to use the software |
+| **UI/UX Designer** | Designs how the application looks and feels so users can interact with it easily |
 
 ---
 
@@ -28,6 +29,7 @@
 |------|---------------|
 | **QE Engineer** (Quality Engineer) | Tests the software to find bugs before it reaches users — the last line of defence before release |
 | **DBA** (Database Administrator) | Manages the database — ensuring data is stored safely, efficiently, and is always available |
+| **Data Engineer** | Builds and maintains systems for collecting, processing, and storing data |
 
 ---
 
@@ -38,3 +40,18 @@
 | **DevOps Engineer** | Automates the build, testing, and deployment pipeline — making releases faster and more reliable |
 | **Release Manager** | Controls when and how new software versions are released, coordinating all teams |
 | **SRE** (Site Reliability Engineer) | Monitors the live system 24/7 to keep it fast, stable, and available to users |
+| **Security Engineer** | Protects systems, applications, and data from threats and vulnerabilities |
+
+---
+
+## How These Roles Work Together
+
+In a real software company, these roles do not work alone. For example:
+
+- The **BA/PM/PO** define what the customer needs
+- The **developer and architect** build the solution
+- The **QE engineer** checks quality
+- The **DevOps engineer** ensures the solution is delivered smoothly
+- The **SRE** keeps the system running after release
+
+This teamwork is the foundation of modern software delivery.
