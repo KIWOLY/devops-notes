@@ -17,6 +17,7 @@
 | Role | Responsibility |
 |------|---------------|
 | **Software Architect** | Designs the overall structure of the system — like an engineer drawing blueprints before a building is constructed |
+| **Solution Architect** | Looks at the full business and technical needs and designs the best solution architecture for the company |
 | **Developer** | Writes the actual code that makes the software work |
 | **Technical Writer** | Writes documentation, user manuals, and guides so people know how to use the software |
 | **UI/UX Designer** | Designs how the application looks and feels so users can interact with it easily |
@@ -55,3 +56,31 @@ In a real software company, these roles do not work alone. For example:
 - The **SRE** keeps the system running after release
 
 This teamwork is the foundation of modern software delivery.
+
+---
+
+## Solution Architect — Technical or Non-Technical?
+
+A **Solution Architect** is usually a **technical expert**, but they also need good **business understanding**.
+
+### Why they are technical
+
+- They understand systems, applications, databases, cloud, networking, and security
+- They choose the right architecture for the solution
+- They make sure the solution is scalable, secure, and maintainable
+
+### Why they are also business-oriented
+
+- They translate business needs into technical solutions
+- They help the company choose the best approach based on cost, time, and goals
+- They connect business teams and technical teams
+
+### In simple terms
+
+A Solution Architect is like a **bridge** between:
+
+- **Business requirements**
+- **Technical implementation**
+- **Long-term system design**
+
+So, they are not just a note-taking person or a simple manager — they are usually a **technical expert with strong planning and communication skills**.
